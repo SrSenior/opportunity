@@ -10,13 +10,12 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField, TextArea(4, 6)] private string[] dialogueLines;
 
     private bool didDialogueStart;
+    private bool isTyping;
+    private Coroutine dialogueCoroutine;
+
     private int lineIndex;
     private float typingTime = 0.05f;
-
-    void Update()
-    {
-        
-    }
+    private float autoAdvanceDelay = 3.0f;
 
     public void TriggerDialogue()
     {
@@ -24,14 +23,10 @@ public class DialogueSystem : MonoBehaviour
         {
             StartDialogue();
         }
-        else if (dialogueText.text == dialogueLines[lineIndex])
+        else if (isTyping)
         {
-            NextDialogueLine();
-        }
-        else
-        {
-            StopAllCoroutines();
-            dialogueText.text = dialogueLines[lineIndex];
+            // Si se está escribiendo, mostrar toda la línea inmediatamente
+            isTyping = false;
         }
     }
 
@@ -41,33 +36,42 @@ public class DialogueSystem : MonoBehaviour
         dialoguePanel.SetActive(true);
         lineIndex = 0;
         Time.timeScale = 0f;
-        StartCoroutine(ShowLine());
+
+        dialogueCoroutine = StartCoroutine(ShowLineAndAutoAdvance());
     }
 
-    private void NextDialogueLine()
+    private IEnumerator ShowLineAndAutoAdvance()
     {
-        lineIndex++;
-        if(lineIndex < dialogueLines.Length)
+        while (lineIndex < dialogueLines.Length)
         {
-            StartCoroutine(ShowLine());
+            yield return StartCoroutine(TypeLine(dialogueLines[lineIndex]));
+            yield return new WaitForSecondsRealtime(autoAdvanceDelay);
+            lineIndex++;
         }
-        else
-        {
-            didDialogueStart = false;
-            dialoguePanel.SetActive(false);
-            Time.timeScale = 1f;
-        }
+
+        // Fin del diálogo
+        didDialogueStart = false;
+        dialoguePanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 
-    private IEnumerator ShowLine()
+    private IEnumerator TypeLine(string line)
     {
         dialogueText.text = string.Empty;
+        isTyping = true;
 
-        foreach (char ch in dialogueLines[lineIndex])
+        foreach (char ch in line)
         {
+            if (!isTyping)
+            {
+                dialogueText.text = line;
+                break;
+            }
+
             dialogueText.text += ch;
             yield return new WaitForSecondsRealtime(typingTime);
         }
-    }
 
+        isTyping = false;
+    }
 }

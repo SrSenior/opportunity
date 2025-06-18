@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems; // ← Importante para eventos de UI
 
-public class BookController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+
+public class BookController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [Header("Sprites")]
     [SerializeField] private Sprite normalSprite;
@@ -10,6 +11,7 @@ public class BookController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     [Header("Referencias")]
     [SerializeField] private RectTransform bookRect;
+    [SerializeField] private GameObject openBookPanel; //Este es el panel donde se visualizará el almanaque y su contenido
 
     private Image image;
 
@@ -38,5 +40,10 @@ public class BookController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private void ApplyRectTransformSettings()
     {
         // Aquí podrías usar phoneRect más adelante si lo necesitás
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        openBookPanel.SetActive(true);
     }
 }
