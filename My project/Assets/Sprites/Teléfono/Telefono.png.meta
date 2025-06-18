@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: aa30be7d9ad1d59418546063071ed91e
+guid: 5f702ed50c85d5e4ab30a46f2699ef6e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4791787675661077058
-    second: Libro_de_puerta_0
+      213: 5452697474232489737
+    second: Telefono_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Libro_de_puerta_0
+      name: Telefono_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 17
-        width: 264
-        height: 291
+        x: 0
+        y: 0
+        width: 140
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eb570293f76208db0800000000000000
-      internalID: -4791787675661077058
+      spriteID: 9071c43967fdbab40800000000000000
+      internalID: 5452697474232489737
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 41cf0e5ddc8f7c24a8039e0cff240406
+    spriteID: a9cae9b80afcf2f4ca7d775b44edb747
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Libro_de_puerta_0: -4791787675661077058
+      Telefono_0: 5452697474232489737
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

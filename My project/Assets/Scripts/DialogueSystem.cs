@@ -2,35 +2,36 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class DialogueSystem : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueIndicator;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField, TextArea(4, 6)] private string[] dialogueLines;
 
-    private bool isPlayerInRange;
     private bool didDialogueStart;
     private int lineIndex;
     private float typingTime = 0.05f;
 
     void Update()
     {
-        if(isPlayerInRange && Input.GetButtonDown("Fire1"))
+        
+    }
+
+    public void TriggerDialogue()
+    {
+        if (!didDialogueStart)
         {
-            if (!didDialogueStart)
-            {
-                StartDialogue();
-            }
-            else if (dialogueText.text == dialogueLines[lineIndex])
-            {
-                NextDialogueLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                dialogueText.text = dialogueLines[lineIndex];
-            }
+            StartDialogue();
+        }
+        else if (dialogueText.text == dialogueLines[lineIndex])
+        {
+            NextDialogueLine();
+        }
+        else
+        {
+            StopAllCoroutines();
+            dialogueText.text = dialogueLines[lineIndex];
         }
     }
 
@@ -69,23 +70,4 @@ public class NewMonoBehaviourScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            isPlayerInRange = true;
-            dialogueIndicator.SetActive(true);
-            Debug.Log("Entra");
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isPlayerInRange = false;
-            dialogueIndicator.SetActive(false);
-            Debug.Log("Sale");
-        }
-    }
 }
