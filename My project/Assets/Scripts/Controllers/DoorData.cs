@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DoorData : MonoBehaviour
+public class DoorData : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [Header("Sprites para aplicar")]
     [SerializeField] private Sprite spriteCuerpo;
@@ -11,12 +12,16 @@ public class DoorData : MonoBehaviour
     [Header("Referencias a hijos")]
     [SerializeField] private Image pomoImage;
     [SerializeField] private Image letreroImage;
+    [SerializeField] private GameObject highligh; //Cuando pasan el mouse sobre
 
     [Header("Datos de la puerta")]
-    [SerializeField] private AudioClip sonidoBasofono;
+    [SerializeField] private AudioClip sonidoVasofono;
     [SerializeField] private AudioClip sonidoKnockKnock;
     [SerializeField] private int nivelRadiacion;  // 0 = bajo, 1 = medio, 2 = alto
     [SerializeField] private int nivelGafas;      // 1 = malo, 2 = neutro, 3 = bueno
+    [SerializeField] private bool esPuertaDerecha;
+
+    public bool EsPuertaDerecha() => esPuertaDerecha; //Esto viene a ser equivalente al Getter de si es o no puerta derecha
 
     private Image cuerpoImage;
 
@@ -53,8 +58,28 @@ public class DoorData : MonoBehaviour
     }
 
     // Getters públicos para herramientas
-    public AudioClip GetSonidoBasofono() => sonidoBasofono;
+    public AudioClip GetSonidoVasofono() => sonidoVasofono;
     public AudioClip GetSonidoKnockKnock() => sonidoKnockKnock;
     public int GetNivelRadiacion() => nivelRadiacion;
     public int GetNivelGafas() => nivelGafas;
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        highligh.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        highligh.SetActive(false);
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        var herramienta = InventoryManager.Instancia.ObtenerHerramientaActiva();
+        if (herramienta != null)
+        {
+            herramienta.AplicarADoor(this);
+        }
+    }
+
+
 }
