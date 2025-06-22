@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 54a24d8680a8a934781521c6be505df5
+guid: 2bec9b3553ab3ad4b986ce98d7535f7f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4518787015168178275
-    second: Puerta01_0
+      213: 2477684985281923634
+    second: PuertaGenerica_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Puerta01_0
+      name: PuertaGenerica_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d97c049b62b0a41c0800000000000000
-      internalID: -4518787015168178275
+      spriteID: 23a4c05ed51826220800000000000000
+      internalID: 2477684985281923634
       vertices: []
       indices: 
       edges: []
