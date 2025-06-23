@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1b37d1b4496205246930929c08ddef3a
+guid: 34bf0635497184e41aaf27337ecfa545
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5525140511357377358
-    second: Hoja_de_apuntes_0
+      213: -2867453925554087287
+    second: Hoja_de_apuntes-larga_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hoja_de_apuntes_0
+      name: Hoja_de_apuntes-larga_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 476
-        height: 523
+        width: 520
+        height: 790
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4b9399850e3dac40800000000000000
-      internalID: 5525140511357377358
+      spriteID: 98a9c8dd8d1c438d0800000000000000
+      internalID: -2867453925554087287
       vertices: []
       indices: 
       edges: []

@@ -24,6 +24,7 @@ public class DoorData : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler,
     public bool EsPuertaDerecha() => esPuertaDerecha; //Esto viene a ser equivalente al Getter de si es o no puerta derecha
 
     private Image cuerpoImage;
+    private bool usable = true; //Para bloquear/desbloquear la puerta
 
     private void Awake()
     {
@@ -65,21 +66,36 @@ public class DoorData : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        highligh.SetActive(true);
+        if (cuerpoImage.raycastTarget)
+            highligh.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        highligh.SetActive(false);
+        if (cuerpoImage.raycastTarget)
+            highligh.SetActive(false);
     }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        var herramienta = InventoryManager.Instancia.ObtenerHerramientaActiva();
-        if (herramienta != null)
+        if(usable)
         {
-            herramienta.AplicarADoor(this);
+            var herramienta = InventoryManager.Instancia.ObtenerHerramientaActiva();
+            if (herramienta != null)
+            {
+                herramienta.AplicarADoor(this);
+            }
         }
     }
 
+    public void Bloquear()
+    {
+        usable = false;
+    }
+
+    public void Desbloquear()
+    {
+        usable = true;
+    }
 
 }

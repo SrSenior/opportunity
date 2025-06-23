@@ -13,17 +13,43 @@ public class KnockKnockController : MonoBehaviour, IAplicableAPuerta
     [SerializeField] private AudioClip sonidoKnockKnock;
 
     private Image imagen;
+    private Coroutine rutina;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         imagen = GetComponent<Image>();
         if (imagen != null && spriteCentral != null)
             imagen.sprite = spriteCentral;
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+    }
+
+    //La idea aquí es que cuando se desactive el elemento, se elimine su audio source y de
+    //este modo no hayan residuos de audio, y se vuelva a crear cuando se vuelva a activar.
+    //O al menos ese es el objetivo de estos OnEnable y OnDisable (sí sirve c: )
+    private void OnEnable()
+    {
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        if (imagen != null && spriteCentral != null)
+            imagen.sprite = spriteCentral;
+    }
+    private void OnDisable()
+    {
+        if (audioSource != null)
+        {
+            audioSource.Stop();     // Detiene cualquier sonido
+            audioSource.clip = null; // Limpia el clip
+        }
     }
 
     public void AplicarADoor(DoorData puerta)
     {
-        StartCoroutine(ProcesoKnockKnock(puerta));
+        rutina = StartCoroutine(ProcesoKnockKnock(puerta));
     }
 
     private IEnumerator ProcesoKnockKnock(DoorData puerta)
@@ -32,10 +58,6 @@ public class KnockKnockController : MonoBehaviour, IAplicableAPuerta
         bool esIzquierda = !puerta.EsPuertaDerecha();
 
         Sprite[] sprites = esIzquierda ? spritesIzquierda : spritesDerecha;
-
-        AudioSource audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-            audioSource = gameObject.AddComponent<AudioSource>();
 
         // Animación
         float duracion = sonidoKnockKnock.length;
@@ -55,12 +77,13 @@ public class KnockKnockController : MonoBehaviour, IAplicableAPuerta
 
         imagen.sprite = spriteCentral;
 
-
         yield return new WaitForSeconds(0.5f);//Esperamos medio segundo antes de reproducir la respuesta
-        if (respuesta != null)
+        if (respuesta != null && audioSource != null)
         {
             audioSource.clip = respuesta;
             audioSource.Play();
         }
+
+        rutina = null;
     }
 }

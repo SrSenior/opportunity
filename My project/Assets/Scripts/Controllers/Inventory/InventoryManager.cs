@@ -15,7 +15,15 @@ public class InventoryManager : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private GafasController gafasController;
 
-
+    public bool InstrumentoEnUso { get; private set; } /*
+                                                        * Se comprueba si el instrumento está en uso.Esta estructura
+                                                        * vendría a ser algo como un Singleton abreviado. Tiene un
+                                                        * método get para conocer su estado y un set privado para
+                                                        * evitar que otros métodos modifiquen su valor. En resumen,
+                                                        * puedes ver su estado desde fuera, pero no modificarlo
+                                                        */
+    public void BloquearInventario() => InstrumentoEnUso = true;
+    public void DesbloquearInventario() => InstrumentoEnUso = false;
 
     private GameObject herramientaActiva = null;
 
@@ -31,6 +39,9 @@ public class InventoryManager : MonoBehaviour
 
     public void SeleccionarSlot(int slotIndex)
     {
+
+        if (InstrumentoEnUso) return; //Si hay un instrumento ejecutándose, se bloquea el inventario
+
         GameObject herramientaSeleccionada = ObtenerHerramientaPorIndice(slotIndex);
 
         if (herramientaSeleccionada == null)
@@ -44,7 +55,14 @@ public class InventoryManager : MonoBehaviour
         }
 
         if (herramientaActiva != null)
-            herramientaActiva.SetActive(false);
+        {
+            // Si el activo es el Geiger y está en uso, no se desactiva
+            GeigerController geigerController = herramientaActiva.GetComponent<GeigerController>();
+            if (geigerController == null || !geigerController.EstaEnUso)
+            {
+                herramientaActiva.SetActive(false);
+            }
+        }
 
         herramientaSeleccionada.SetActive(true);
         herramientaActiva = herramientaSeleccionada;
@@ -56,6 +74,17 @@ public class InventoryManager : MonoBehaviour
             gafasController.AplicarADoor(puertaDerecha);
         }
 
+    }
+
+    public int ObtenerIndiceHerramientaActiva()
+    {
+        if (herramientaActiva == null) return 0;
+        if (herramientaActiva == vasofono) return 1;
+        if (herramientaActiva == knockKnock) return 2;
+        if (herramientaActiva == geiger) return 3;
+        if (herramientaActiva == gafas) return 4;
+
+        return 0;
     }
 
     private GameObject ObtenerHerramientaPorIndice(int index)
