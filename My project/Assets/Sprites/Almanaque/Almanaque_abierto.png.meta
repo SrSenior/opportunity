@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Almanaque_abierto_0: 4518067242020776586
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

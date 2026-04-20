@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Luz-Geiger_0: -6449239762521355659
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

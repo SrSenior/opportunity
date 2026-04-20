@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Libro_de_puerta_luz_0: -4030506814397406260
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

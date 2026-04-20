@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Geiger mini-izquierda_0: -2653743483252251396
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

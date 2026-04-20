@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Barra de tiempo-Geiger03_0: 5327920879915619242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

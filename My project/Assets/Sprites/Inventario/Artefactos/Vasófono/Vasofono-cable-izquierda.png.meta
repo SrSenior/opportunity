@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Vasofono-cable-izquierda_0: -6767775121495385680
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

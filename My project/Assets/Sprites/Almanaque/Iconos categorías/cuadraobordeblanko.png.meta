@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cuadraobordeblanko_0: -580471048271551942
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

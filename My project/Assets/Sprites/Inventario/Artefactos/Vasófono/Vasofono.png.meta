@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Vasofono_0: 4155043747470295609
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
