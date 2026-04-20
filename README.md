@@ -36,7 +36,7 @@ Esto permite rejugabilidad y evita soluciones predecibles.
 
 ## 📷 Demo
 
-<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/5e922b89-1d5c-4c7b-a161-d1315ca17bde"> /<br>
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/5e922b89-1d5c-4c7b-a161-d1315ca17bde" /><br>
 <img width="1916" height="1079" alt="image" src="https://github.com/user-attachments/assets/043db09d-3961-4d31-807d-bcd8c1d34e19" /><br>
 
 ## 💡 Aprendizajes
